@@ -1,0 +1,23 @@
+<script>
+	/*
+	Is palindrome
+	*/
+	(()=>{
+
+		function isPalindrome( string ) {
+			string = string.toLowerCase();
+			var characterArr = string.split('');
+			var validarCharacteres = 'abcdefghijklmnopqrstuvzxyz';
+			
+			var letterArr = [];
+			characterArr.forEach( char => {
+				if(validarCharacteres.indexOf(char) > -1) letterArr.push(char);
+			});
+
+			if(letterArr.join('') === letterArr.reverse().join('')) return true;
+			
+			return false;
+		}
+		console.log(isPalindrome("Anita lava la tina"));
+	})();
+</script>
