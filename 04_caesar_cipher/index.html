@@ -1,0 +1,38 @@
+<script>
+	(()=>{
+		function caesarCipher(str, num) {
+			num %= 26; // asocia al modulo para reducir iteracion de desplazamiento
+
+			var lowerCaseString = str.toLowerCase();
+			var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+			var newString = '';
+			for( var i = 0; i< lowerCaseString.length; i++) {
+				var currentLetter = lowerCaseString[i];
+
+				if(currentLetter === ' ') {
+					newString += currentLetter;
+					continue;
+				}
+				
+				var currentIndex = alphabet.indexOf(currentLetter);
+
+				var newIndex = currentIndex + num;
+				console.log(newIndex);
+				//identificar a que posisicion se va a recorrer
+				if(newIndex > 25 ) newIndex -= 26;
+				//validate number negatives
+				if(newIndex < 0 ) newIndex += 26;
+
+				//verificar si el caracter es mayuscula
+				if( str[i] === str[i].toUpperCase() ) {
+					newString += alphabet[newIndex].toUpperCase();
+					continue;
+				}
+				newString += alphabet[newIndex];
+			}
+			return newString; 
+		}
+		//Testing 
+		console.log(caesarCipher('yZ',1));
+	})();
+</script>
