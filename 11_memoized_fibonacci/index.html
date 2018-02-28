@@ -1,0 +1,29 @@
+<script>
+  function memoFibonacci(index, cache){
+    //index: indice de la secuencia de numero fibonnaci
+    //cache: un arreglo usado como memoria
+    cache = cache  || [];
+    if(cache[index]) return cache[index];
+    else {
+      if( index < 3 ) return 1;
+      else {
+        cache[index] = memoFibonacci( index-1, cache) + memoFibonacci( index-2, cache)
+      }
+    }
+
+    return cache[index];
+  }
+
+  console.log(memoFibonacci(100));
+  console.log(myMemoFibonacci(100));
+
+  function myMemoFibonacci(index, cache){
+    //index: indice de la secuencia de numero fibonnaci
+    //cache: un arreglo usado como memoria
+    cache = cache  || [];
+    if(cache[index]) return cache[index];
+    if( index < 3 ) return 1;
+    cache[index] = myMemoFibonacci( index-1, cache) + myMemoFibonacci( index-2, cache);
+    return cache[index];
+  }
+</script>
